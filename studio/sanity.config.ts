@@ -13,8 +13,8 @@ const vorschauUrl =
   process.env.SANITY_STUDIO_PREVIEW_URL || "http://localhost:3000";
 
 export default defineConfig({
-  name: "masswerk",
-  title: "Maßwerk",
+  name: "doermannDigital",
+  title: "Dörmann Digital",
   projectId,
   dataset,
   plugins: [

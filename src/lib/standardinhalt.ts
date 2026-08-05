@@ -22,9 +22,11 @@ import type {
    ================================================================== */
 
 export const standardGrundeinstellungen: Grundeinstellungen = {
-  name: "Maßwerk",
-  claim: "Websites nach Maß für lokale Betriebe",
-  verfuegbarkeit: "Ich nehme derzeit neue Projekte an",
+  name: "Dörmann Digital",
+  claim: "Websites für lokale Betriebe",
+  // Leer lassen. Nur füllen, wenn es etwas anzukündigen gibt —
+  // etwa "Ab Oktober wieder Projektplätze frei".
+  verfuegbarkeit: "",
   laufband: [
     "Schnell auch bei schlechtem Netz",
     "Bewerben ohne Unterlagen",
@@ -34,7 +36,7 @@ export const standardGrundeinstellungen: Grundeinstellungen = {
     "DSGVO-konform gebaut",
   ],
   telefon: "+49 151 00000000", // ANPASSEN
-  email: "hallo@masswerk.de", // ANPASSEN
+  email: "hallo@doermann-digital.de", // ANPASSEN
   erreichbarkeit: "Montag bis Freitag, 8 bis 18 Uhr",
   antwortzeit: "Ich melde mich innerhalb von 24 Stunden telefonisch bei Ihnen.",
   inhaber: "Julius Dörmann", // ANPASSEN
@@ -45,7 +47,7 @@ export const standardGrundeinstellungen: Grundeinstellungen = {
   umsatzsteuerId: null, // ANPASSEN
   kleinunternehmer: true, // ANPASSEN
   seo: {
-    titel: "Maßwerk — Websites nach Maß für lokale Betriebe",
+    titel: "Dörmann Digital — Websites für lokale Betriebe",
     beschreibung:
       "Websites für Handwerk, Werkstatt, Praxis und Laden: schnell, ohne Cookie-Banner, mit einer Stellenseite, über die sich Leute ohne Unterlagen melden. Zum Festpreis.",
     bild: null,
@@ -61,28 +63,11 @@ export const standardStartseite: Startseite = {
     "Ich baue Websites für Betriebe, die von ihrer Region leben. Schnell genug, dass niemand vorher abspringt. So gebaut, dass Kunden anrufen und sich Leute bewerben, ohne vorher Unterlagen zusammenzusuchen. Und zum Festpreis, der vor dem ersten Handschlag feststeht.",
   hauptaktion: { beschriftung: "Website-Check anfordern", ziel: "/kontakt" },
   nebenaktion: { beschriftung: "Leistungen ansehen", ziel: "/leistungen" },
-  kennzahlen: [
-    // Keine gemessenen Werte, sondern drei Zusagen: Sie hängen an meiner
-    // Arbeitsweise, nicht an einer Messung, die beim Kunden anders ausfällt.
-    {
-      _key: "k1",
-      wert: "Festpreis",
-      label: "Angebot",
-      erlaeuterung: "Der Preis steht vor dem ersten Handschlag und ändert sich nicht.",
-    },
-    {
-      _key: "k2",
-      wert: "Einer",
-      label: "Ansprechpartner",
-      erlaeuterung: "Sie reden mit mir, nicht mit einem Kundenkonto.",
-    },
-    {
-      _key: "k3",
-      wert: "Keins",
-      label: "Cookie-Banner",
-      erlaeuterung: "Ohne Tracking braucht es keine Einwilligung.",
-    },
-  ],
+  // Bewusst leer: Festpreis, ein Ansprechpartner und der Verzicht auf
+  // Cookie-Banner stehen ohnehin schon im Ablauf, unter „Über mich“ und im
+  // Laufband. Eine vierte Wiederholung im Aufmacher trägt nichts bei.
+  kennzahlen: [],
+
   ausgangslage: {
     kennzeichnung: "Ausgangslage",
     titel: "Was ich auf den meisten Betriebswebsites finde",
@@ -151,7 +136,7 @@ export const standardStartseite: Startseite = {
   },
   schlussAktion: { beschriftung: "Website-Check anfordern", ziel: "/kontakt" },
   seo: {
-    titel: "Maßwerk — Websites nach Maß für lokale Betriebe",
+    titel: "Dörmann Digital — Websites für lokale Betriebe",
     beschreibung:
       "Schnelle Websites für Handwerk, Werkstatt, Praxis und Laden. Mit einer Stellenseite für die Mitarbeitersuche, ohne Cookie-Banner, zum Festpreis.",
     bild: null,
@@ -451,7 +436,7 @@ export const standardReferenzseite: Referenzseite = {
   seo: {
     titel: "Referenzen",
     beschreibung:
-      "Prototypen und Kundenprojekte von Maßwerk: Aufbau, Tempo und Bedienung zum Anschauen.",
+      "Prototypen und Kundenprojekte von Dörmann Digital: Aufbau, Tempo und Bedienung zum Anschauen.",
     bild: null,
     vonSucheAusschliessen: false,
   },

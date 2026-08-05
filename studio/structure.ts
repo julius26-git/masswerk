@@ -16,7 +16,7 @@ export const einzelstuecke = [
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("Maßwerk")
+    .title("Dörmann Digital")
     .items([
       S.listItem()
         .title("Grundeinstellungen")

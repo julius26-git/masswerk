@@ -1,6 +1,6 @@
-# Maßwerk
+# Dörmann Digital
 
-Website der Webdesign-Agentur **Maßwerk** — Next.js 16 (App Router, Turbopack),
+Website der Webdesign-Agentur **Dörmann Digital** — Next.js 16 (App Router, Turbopack),
 Tailwind CSS 4 und Sanity als Redaktionssystem.
 
 ---
@@ -25,7 +25,7 @@ Platzhaltern belegt:
 | Feld | aktuell |
 | --- | --- |
 | Telefon | `+49 151 00000000` |
-| E-Mail | `hallo@masswerk.de` |
+| E-Mail | `hallo@doermann-digital.de` |
 | Straße, PLZ, Ort | `Musterstraße 1, 42551 Velbert` |
 | Umsatzsteuer-ID | leer, Kleinunternehmerregelung ist aktiv |
 
@@ -72,7 +72,7 @@ SANITY_WRITE_TOKEN=<token> npm run inhalt:anlegen -- --ueberschreiben
 npx sanity tokens delete <token-id> --project-id z88uzayz
 ```
 
-Im Projekt liegt dauerhaft nur ein Lese-Token (`masswerk-web-read-2`, Rolle
+Im Projekt liegt dauerhaft nur ein Lese-Token (`leseschluessel`, Rolle
 *Viewer*) in `.env.local`. Es darf nichts verändern.
 
 ### Später: Fotos und Video anbieten
@@ -115,10 +115,10 @@ Umgebungsvariablen aus `.env.example` setzen. Danach die Produktionsadresse in
 Sanity als CORS-Ursprung eintragen:
 
 ```bash
-npx sanity cors add https://masswerk.de --credentials
+npx sanity cors add https://doermann-digital.de --credentials
 ```
 
-**Studio:** `npm run studio:deploy` → erreichbar unter `masswerk.sanity.studio`.
+**Studio:** `npm run studio:deploy` → erreichbar unter `doermann-digital.sanity.studio`.
 
 **Kontaktformular:** Ohne `RESEND_API_KEY`, `KONTAKT_EMPFAENGER` und
 `KONTAKT_ABSENDER` nimmt das Formular Anfragen an und schreibt sie ins

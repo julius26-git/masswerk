@@ -1,12 +1,14 @@
-# Designsystem Maßwerk
+# Designsystem Dörmann Digital
 
 ## Die Idee
 
-Der Name kommt aus der Architektur: Maßwerk ist die steinerne Gliederung eines
-gotischen Fensters — Präzision im Handwerk. Das Bild der Website ist deshalb ein
-**Zeichentisch**: Der Hintergrund ist eine Schneidematte mit Raster, jeder Inhalt
-liegt als Blatt Papier darauf. Wer Websites an Betriebe verkauft, die von
-Bauplänen leben, zeigt sie am besten in deren eigener Sprache.
+Das Bild der Website ist ein **Zeichentisch**: Der Hintergrund ist eine
+Schneidematte mit Raster, jeder Inhalt liegt als Blatt Papier darauf. Wer
+Websites an Betriebe verkauft, die von Bauplänen leben, zeigt sie am besten in
+deren eigener Sprache — als Zeichnung, die man lesen kann, bevor gebaut wird.
+
+Der Name selbst bleibt dabei bewusst schlicht: Er nennt die Person und das Fach,
+nicht das Bild. Das Bild steht in der Gestaltung.
 
 Die Formensprache ist an das ausgewählte Vorbild angelehnt (units., Awwwards):
 schwebende Karten mit kräftiger Kontur auf einem gerasterten Grund, ein Laufband,

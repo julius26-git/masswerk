@@ -238,7 +238,7 @@ export function Bauplan() {
       <g className="fuellung" style={{ animationDelay: "2020ms" }}>
         <path d="M392,560 H620" stroke={INK} strokeWidth="1" opacity="0.35" />
         <text className="beschriftung" x="392" y="580" fill={INK} opacity="0.45">
-          Maßwerk · Blatt 01
+          Dörmann Digital · Blatt 01
         </text>
         <text className="beschriftung" x="392" y="598" fill={INK} opacity="0.45">
           Gebaut, nicht gemalt

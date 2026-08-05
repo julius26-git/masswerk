@@ -60,15 +60,19 @@ export function Aufmacher({
               </Link>
             </div>
 
-            <p className="schrift-etikett etikett-leise mt-5 flex items-center gap-2">
-              <span
-                aria-hidden="true"
-                className="inline-block h-2 w-2 rounded-full bg-signal"
-                style={{ animation: "blinken 2.4s ease-in-out infinite" }}
-              />
-              {einstellungen.verfuegbarkeit}
-            </p>
+            {/* Erscheint nur, wenn es wirklich etwas anzukündigen gibt. */}
+            {einstellungen.verfuegbarkeit ? (
+              <p className="schrift-etikett etikett-leise mt-5 flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rounded-full bg-signal"
+                  style={{ animation: "blinken 2.4s ease-in-out infinite" }}
+                />
+                {einstellungen.verfuegbarkeit}
+              </p>
+            ) : null}
 
+            {seite.kennzahlen.length > 0 ? (
             <dl className="mt-auto grid grid-cols-1 gap-px border-t border-[var(--trennlinie)] pt-8 sm:grid-cols-3">
               {seite.kennzahlen.map((kennzahl) => (
                 <div
@@ -89,6 +93,7 @@ export function Aufmacher({
                 </div>
               ))}
             </dl>
+            ) : null}
           </div>
 
           <div className="blatt papier-raster flex items-center justify-center overflow-hidden p-4 sm:p-6 lg:col-span-5">

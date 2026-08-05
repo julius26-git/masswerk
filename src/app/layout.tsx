@@ -69,7 +69,7 @@ export const viewport: Viewport = {
  * gesehen hat, bekommt sie nicht noch einmal. Ohne dieses Skript würde die
  * Sequenz kurz aufblitzen, bevor React sie entfernen könnte.
  */
-const introSkript = `document.documentElement.dataset.js="1";try{if(sessionStorage.getItem("masswerk-intro")){document.documentElement.dataset.intro="aus"}else{sessionStorage.setItem("masswerk-intro","1")}}catch(e){}`;
+const introSkript = `document.documentElement.dataset.js="1";try{if(sessionStorage.getItem("dd-intro")){document.documentElement.dataset.intro="aus"}else{sessionStorage.setItem("dd-intro","1")}}catch(e){}`;
 
 export default async function RootLayout({
   children,

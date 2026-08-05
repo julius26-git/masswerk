@@ -8,5 +8,5 @@ export const client = createClient({
   apiVersion,
   useCdn: true,
   perspective: "published",
-  stega: { studioUrl: "https://masswerk.sanity.studio" },
+  stega: { studioUrl: "https://doermann-digital.sanity.studio" },
 });

@@ -5,7 +5,7 @@ export default defineCliConfig({
     projectId: "z88uzayz",
     dataset: "production",
   },
-  studioHost: "masswerk",
+  studioHost: "doermann-digital",
   deployment: {
     appId: "c5l5dq7w3x0a28sq5zaagxgu",
   },
