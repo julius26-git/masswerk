@@ -216,17 +216,21 @@ export const standardLeistungen: Leistung[] = [
   },
   {
     _id: "leistung-assistent",
-    titel: "KI-Assistent für Standardfragen",
+    titel: "KI-Assistent",
     slug: "ki-assistent",
     bereich: "website",
     versprechen: "Das Telefon klingelt seltener wegen Fragen, die auf der Seite stehen.",
+    // „Sunny“ steht hier als Beispiel, nicht als Produktname: Der Assistent
+    // heißt bei jedem Betrieb anders, und genau das ist der Unterschied zu
+    // einem zugekauften Chat-Fenster.
     teaser:
-      "Ein Assistent auf Ihrer Website beantwortet die immer gleichen Fragen: Öffnungszeiten, Ablauf, was zu einer Reparatur nötig ist. Er antwortet nur aus dem, was Sie hinterlegt haben, und erfindet nichts dazu.",
+      "Ein Assistent auf Ihrer Website beantwortet die immer gleichen Fragen: Öffnungszeiten, Ablauf, was für ein Angebot nötig ist. Er antwortet nur aus dem, was Sie hinterlegt haben. Und er trägt Ihren Namen, nicht meinen — bei Rollladen Reuther heißt er „Sunny“.",
     umfang: [
+      "Bekommt einen Namen, der zu Ihrem Betrieb passt",
       "Antworten kommen aus Ihren Angaben, nicht aus dem Internet",
       "Das Sprachmodell läuft bei einem deutschen Anbieter",
       "Kein Gesprächsverlauf wird gespeichert oder protokolliert",
-      "Weiß der Assistent nicht weiter, verweist er aufs Telefon",
+      "Weiß er nicht weiter, verweist er aufs Telefon",
       "Fragen und Antworten pflegen Sie selbst",
     ],
     beschreibung: null,
