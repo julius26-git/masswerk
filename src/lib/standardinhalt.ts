@@ -83,14 +83,14 @@ export const standardStartseite: Startseite = {
   ],
   loesung: {
     kennzeichnung: "Lösung",
-    titel: "Drei Dinge, die den Unterschied machen",
-    text: "Dahinter steckt moderne Webtechnik. Was Sie davon merken, ist das hier.",
+    titel: "Was im Alltag anders ist",
+    text: "Dahinter steckt moderne Webtechnik. Wichtiger ist, was davon bei Ihnen ankommt.",
   },
   vorteile: [
     {
       _key: "v1",
       titel: "Google mag schnelle Seiten",
-      text: "Ihre Seite wird als fertige Datei ausgeliefert und nicht bei jedem Aufruf neu zusammengebaut. Das zählt bei Google als Rankingfaktor — und Ihre Besucher merken es auch.",
+      text: "Ihre Seite wird als fertige Datei ausgeliefert und nicht bei jedem Aufruf neu zusammengebaut. Das zählt bei Google als Rankingfaktor. Ihre Besucher merken es auch.",
     },
     {
       _key: "v2",
@@ -100,7 +100,7 @@ export const standardStartseite: Startseite = {
     {
       _key: "v3",
       titel: "Bewerben ohne Hürde",
-      text: "Wer wechseln will, sitzt selten am Schreibtisch. Deshalb fragt Ihre Stellenseite nur das ab, was für den ersten Kontakt zählt. Unterlagen kommen später — wenn überhaupt.",
+      text: "Wer wechseln will, sitzt selten am Schreibtisch. Deshalb fragt Ihre Stellenseite nur das ab, was für den ersten Kontakt zählt. Unterlagen kommen später, wenn überhaupt.",
     },
   ],
   branchenKopf: {
@@ -110,7 +110,7 @@ export const standardStartseite: Startseite = {
   },
   leistungenKopf: {
     kennzeichnung: "Leistungen",
-    titel: "Was dazugehört",
+    titel: "Woraus eine Seite besteht",
     text: "Einzeln möglich, zusammen sinnvoll.",
   },
   ablaufKopf: {
@@ -204,7 +204,7 @@ export const standardLeistungen: Leistung[] = [
     bereich: "website",
     versprechen: "Ihre Website wird der Weg, auf dem sich Leute bei Ihnen melden.",
     teaser:
-      "Eine eigene Seite für offene Stellen und ein Weg zur Kontaktaufnahme, der so kurz ist wie möglich. Wie kurz genau, entscheiden wir gemeinsam — je nachdem, wen Sie suchen und was Sie vorab wirklich wissen müssen.",
+      "Eine eigene Seite für offene Stellen und ein Weg zur Kontaktaufnahme, der so kurz ist wie möglich. Wie kurz genau, hängt davon ab, wen Sie suchen und was Sie vorab wirklich wissen müssen.",
     umfang: [
       "Eigene Seite je offener Stelle, in Ihrer Sprache geschrieben",
       "Erster Kontakt ohne Lebenslauf und Anschreiben",
@@ -224,7 +224,7 @@ export const standardLeistungen: Leistung[] = [
     // heißt bei jedem Betrieb anders, und genau das ist der Unterschied zu
     // einem zugekauften Chat-Fenster.
     teaser:
-      "Ein Assistent auf Ihrer Website beantwortet die immer gleichen Fragen: Öffnungszeiten, Ablauf, was für ein Angebot nötig ist. Er antwortet nur aus dem, was Sie hinterlegt haben. Und er trägt Ihren Namen, nicht meinen — bei Rollladen Reuther heißt er „Sunny“.",
+      "Ein Assistent auf Ihrer Website beantwortet die immer gleichen Fragen: Öffnungszeiten, Ablauf, was für ein Angebot nötig ist. Er antwortet nur aus dem, was Sie hinterlegt haben. Und er trägt Ihren Namen, nicht meinen. Bei Rollladen Reuther heißt er „Sunny“.",
     umfang: [
       "Bekommt einen Namen, der zu Ihrem Betrieb passt",
       "Antworten kommen aus Ihren Angaben, nicht aus dem Internet",
@@ -242,7 +242,7 @@ export const standardLeistungen: Leistung[] = [
     bereich: "sichtbarkeit",
     versprechen: "Bei „… in meiner Nähe“ stehen Sie oben, nicht auf Seite zwei.",
     teaser:
-      "Ihr Google-Unternehmensprofil wird eingerichtet und geschärft, die Seite auf die Suchbegriffe ausgerichtet, mit denen Kunden tatsächlich suchen — nicht auf die, die intern schön klingen.",
+      "Ihr Google-Unternehmensprofil wird eingerichtet und geschärft, die Seite auf die Suchbegriffe ausgerichtet, mit denen Kunden tatsächlich suchen, nicht auf die, die intern schön klingen.",
     umfang: [
       "Google-Unternehmensprofil einrichten und pflegen",
       "Eine Seite je Leistung statt einer Sammelseite",
@@ -258,7 +258,7 @@ export const standardLeistungen: Leistung[] = [
     bereich: "betreuung",
     versprechen: "Sie rufen an, ich kümmere mich. Keine Ticketnummer.",
     teaser:
-      "Technik, Updates, Sicherung und kleine Änderungen laufen über mich. Sie merken davon nichts — außer daran, dass die Seite läuft.",
+      "Technik, Updates, Sicherung und kleine Änderungen laufen über mich. Sie merken davon nichts, außer daran, dass die Seite läuft.",
     umfang: [
       "Technik und Sicherheitsupdates laufend",
       "Tägliche Sicherung, Wiederherstellung auf Zuruf",
@@ -272,7 +272,7 @@ export const standardLeistungen: Leistung[] = [
     titel: "Fotos & Film",
     slug: "fotos-film",
     bereich: "medien",
-    versprechen: "Ihr Betrieb, Ihre Leute — statt gekaufter Stockfotos.",
+    versprechen: "Ihr Betrieb und Ihre Leute statt gekaufter Stockfotos.",
     teaser:
       "Ein Vor-Ort-Termin, aus dem Bilder und kurze Filme für Website, Google-Profil und Stellenanzeigen entstehen. Passend zur Seite gestaltet, nicht danebengelegt.",
     umfang: [
@@ -303,14 +303,14 @@ export const standardArbeitsschritte: Arbeitsschritt[] = [
   {
     _id: "schritt-3",
     titel: "Bauphase",
-    text: "Ich baue, Sie sehen ab dem ersten Tag eine Vorschau im Netz. Dazwischen zwei Abstimmungen — mehr brauche ich nicht von Ihnen.",
+    text: "Ich baue, Sie sehen ab dem ersten Tag eine Vorschau im Netz. Dazwischen zwei Abstimmungen. Mehr brauche ich nicht von Ihnen.",
     dauer: "3 bis 5 Wochen",
     aufwandKunde: "Zwei Termine",
   },
   {
     _id: "schritt-4",
     titel: "Übergabe",
-    text: "Die Seite geht online, Sie bekommen alle Zugänge und eine Einweisung. Danach ändern Sie Texte und Bilder selbst — oder Sie rufen an.",
+    text: "Die Seite geht online, Sie bekommen alle Zugänge und eine Einweisung. Danach ändern Sie Texte und Bilder selbst. Oder Sie rufen an.",
     dauer: "1 Stunde",
     aufwandKunde: "Eine Einweisung",
   },
@@ -355,10 +355,10 @@ export const standardFragen: Frage[] = [
     frage: "Was kostet eine Website bei Ihnen?",
     antwort: [
       absatz(
-        "Das hängt vom Umfang ab: wie viele Seiten, ob eine Stellenseite dazukommt, ob ich Bilder mache, ob Sie die laufende Betreuung möchten. Eine Zahl, die für jeden Betrieb stimmt, gibt es nicht — und eine zu nennen, die für Ihren dann doch nicht gilt, hilft niemandem.",
+        "Das hängt vom Umfang ab: wie viele Seiten, ob eine Stellenseite dazukommt, ob ich Bilder mache, ob Sie die laufende Betreuung möchten. Eine Zahl, die für jeden Betrieb stimmt, gibt es nicht. Eine zu nennen, die für Ihren dann doch nicht gilt, hilft niemandem.",
       ),
       absatz(
-        "Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Der steht vor dem ersten Handschlag fest und ändert sich danach nicht mehr. Sagen Sie mir im Gespräch ruhig, welchen Rahmen Sie sich vorstellen — dann sage ich Ihnen ehrlich, ob das zusammenpasst.",
+        "Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Der steht vor dem ersten Handschlag fest und ändert sich danach nicht mehr. Sagen Sie mir im Gespräch ruhig, welchen Rahmen Sie sich vorstellen. Dann sage ich Ihnen ehrlich, ob das zusammenpasst.",
       ),
     ],
   },
@@ -376,7 +376,7 @@ export const standardFragen: Frage[] = [
     frage: "Ich habe keine guten Fotos. Ist das ein Problem?",
     antwort: [
       absatz(
-        "Nein. Für den Anfang reichen ehrliche Handybilder von Baustelle, Werkstatt oder Team — die wirken oft besser als gekaufte Stockfotos mit lachenden Models im weißen Hemd.",
+        "Nein. Für den Anfang reichen ehrliche Handybilder von Baustelle, Werkstatt oder Team. Die wirken oft besser als gekaufte Stockfotos mit lachenden Models im weißen Hemd.",
       ),
       absatz(
         "Wenn es richtig gut werden soll, komme ich für einen halben Tag vorbei und fotografiere selbst.",
@@ -398,7 +398,7 @@ export const standardFragen: Frage[] = [
     frage: "Was passiert mit meiner alten Seite und meinen E-Mail-Adressen?",
     antwort: [
       absatz(
-        "Die alte Seite bleibt online, bis die neue fertig ist. Der Umzug passiert an einem Abend. Ihre E-Mail-Adressen laufen weiter — daran rühre ich nur, wenn Sie es ausdrücklich möchten.",
+        "Die alte Seite bleibt online, bis die neue fertig ist. Der Umzug passiert an einem Abend. Ihre E-Mail-Adressen laufen weiter. Daran rühre ich nur, wenn Sie es ausdrücklich möchten.",
       ),
       absatz(
         "Alte Adressen werden auf die neuen Seiten umgeleitet, damit Google-Treffer und alte Verlinkungen nicht ins Leere laufen.",
@@ -413,7 +413,7 @@ export const standardFragen: Frage[] = [
         "Weil ich nichts speichere, wofür ich Sie um Erlaubnis fragen müsste. Keine Analysedienste, keine Werbenetzwerke, keine Schriften von fremden Servern.",
       ),
       absatz(
-        "Ein Banner ist keine Pflicht, sondern die Folge davon, dass eine Seite Daten weitergibt. Lässt man das weg, entfällt auch das Banner — und niemand muss beim ersten Besuch etwas wegklicken.",
+        "Ein Banner ist keine Pflicht, sondern die Folge davon, dass eine Seite Daten weitergibt. Lässt man das weg, entfällt auch das Banner, und niemand muss beim ersten Besuch etwas wegklicken.",
       ),
     ],
   },
@@ -426,15 +426,15 @@ export const standardLeistungsseite: Leistungsseite = {
     text: "Eine Website ist kein Selbstzweck. Sie soll Anfragen bringen, Bewerbungen bringen und in Ruhe laufen. Danach sind diese Leistungen geschnitten.",
   },
   preishinweis:
-    "Zu Preisen: Was eine Website kostet, hängt am Umfang — Seitenzahl, Funktionen, Bilder, Betreuung. Deshalb steht hier keine Zahl, die für Ihren Betrieb ohnehin nicht stimmen würde. Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Was darin steht, gilt.",
+    "Zu Preisen: Was eine Website kostet, hängt am Umfang: Seitenzahl, Funktionen, Bilder, Betreuung. Deshalb steht hier keine Zahl, die für Ihren Betrieb ohnehin nicht stimmen würde. Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Was darin steht, gilt.",
   ablaufKopf: {
     kennzeichnung: "Ablauf",
     titel: "So läuft die Zusammenarbeit",
-    text: "Damit Sie wissen, worauf Sie sich einlassen — und wie wenig Zeit es Sie kostet.",
+    text: "Damit Sie wissen, worauf Sie sich einlassen und wie wenig Zeit es Sie kostet.",
   },
   fragenKopf: {
     kennzeichnung: "Häufige Fragen",
-    titel: "Was vor dem ersten Anruf oft gefragt wird",
+    titel: "Bevor Sie anrufen",
     text: null,
   },
   seo: {
@@ -450,10 +450,10 @@ export const standardReferenzseite: Referenzseite = {
   kopf: {
     kennzeichnung: "Referenzen",
     titel: "Gebaute Seiten",
-    text: "Was ich zeige, zeige ich vollständig: Auftrag, Umsetzung und — sobald sie vorliegen — echte Zahlen. Was noch nicht öffentlich ist, sage ich dazu."
+    text: "Was ich zeige, zeige ich vollständig: Auftrag, Umsetzung und echte Zahlen, sobald sie vorliegen. Was noch nicht öffentlich ist, sage ich dazu."
   },
   platzhalterHinweis:
-    "Als „Prototyp“ markierte Projekte sind Gestaltungsstudien für erfundene Betriebe — gebaut, um Aufbau, Tempo und Bedienung zu zeigen. Erfundene Erfolgszahlen finden Sie nirgends: Die stehen erst hier, wenn sie echt sind.",
+    "Als „Prototyp“ markierte Projekte sind Gestaltungsstudien für erfundene Betriebe. Sie zeigen Aufbau, Tempo und Bedienung. Erfundene Erfolgszahlen finden Sie nirgends: Die stehen erst hier, wenn sie echt sind.",
   seo: {
     titel: "Referenzen",
     beschreibung:
@@ -475,7 +475,7 @@ export const standardUeberSeite: UeberSeite = {
       "Ich bin Julius, ich baue Websites, und ich habe eine Schwäche für Betriebe, in denen am Ende des Tages etwas fertig ist, das man anfassen kann.",
     ),
     absatz(
-      "Was mich an dieser Arbeit stört: Handwerksbetriebe liefern jeden Tag saubere, ehrliche Arbeit ab — und ihre Website sieht aus, als wäre sie nebenbei entstanden. Umgekehrt gibt es Betriebe, deren Website glänzt, während die Arbeit dahinter nichts taugt. Der zweite Fall ist ein Marketingproblem. Der erste ist ein Ärgernis, und den kann ich beheben.",
+      "Was mich an dieser Arbeit stört: Handwerksbetriebe liefern jeden Tag saubere, ehrliche Arbeit ab. Und ihre Website sieht aus, als wäre sie nebenbei entstanden. Umgekehrt gibt es Betriebe, deren Website glänzt, während die Arbeit dahinter nichts taugt. Der zweite Fall ist ein Marketingproblem. Der erste ist ein Ärgernis, und den kann ich beheben.",
     ),
     absatz(
       "Deshalb arbeite ich so, wie ein guter Handwerker arbeitet: Ich sage vorher, was es kostet. Ich halte Termine. Ich erkläre, was ich tue, ohne mich hinter Fachbegriffen zu verstecken. Und wenn etwas nicht funktioniert, hören Sie das von mir, bevor Sie fragen müssen.",
@@ -524,7 +524,7 @@ export const standardKontaktseite: Kontaktseite = {
   formularHinweis:
     "Wenn Ihnen Schreiben lieber ist: ein paar Zeilen genügen.",
   ablauf: [
-    "Ich melde mich innerhalb von 24 Stunden — werktags meist deutlich schneller.",
+    "Ich melde mich innerhalb von 24 Stunden, werktags meist deutlich schneller.",
     "Wir telefonieren rund 20 Minuten. Sie erzählen, ich höre zu und frage nach.",
     "Sie bekommen eine ehrliche Einschätzung. Auch dann, wenn sie lautet: Lassen Sie es.",
   ],

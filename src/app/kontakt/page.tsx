@@ -79,9 +79,9 @@ export default async function KontaktSeite() {
         <div className="bahn" data-auftritt="warten">
           <h2 className="schrift-etikett etikett">Was mit Ihren Daten passiert</h2>
           <p className="fliesstext mt-4 text-[0.9375rem] opacity-70">
-            Ihre Angaben gehen ausschließlich an mich und dienen nur der Beantwortung
-            Ihrer Anfrage. Es gibt kein Tracking, keine Weitergabe an Dritte und keine
-            Newsletter-Anmeldung durch die Hintertür.
+            Ihre Angaben gehen ausschließlich an mich und dienen nur der
+            Beantwortung Ihrer Anfrage. Es gibt kein Tracking und keine Weitergabe
+            an Dritte. In einen Newsletter trägt Sie hier auch niemand heimlich ein.
           </p>
         </div>
       </Abschnitt>

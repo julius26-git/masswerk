@@ -114,7 +114,7 @@ export function Kontaktformular({ einleitung }: { einleitung?: string | null }) 
           tabIndex={-1}
           className="schrift-display titel-m mt-5"
         >
-          Danke — ich melde mich.
+          Danke, ich melde mich.
         </h2>
         <p className="fliesstext mt-4 text-ink-2">
           Ihre Anfrage liegt bei mir. Sie hören innerhalb von 24 Stunden von mir,

@@ -61,7 +61,7 @@ export default async function LeistungenSeite() {
       />
 
       <Leistungsverzeichnis
-        kopf={{ kennzeichnung: "Umfang", titel: "Was jeweils dazugehört", text: null }}
+        kopf={{ kennzeichnung: "Umfang", titel: "Im Einzelnen", text: null }}
         leistungen={webLeistungen}
         ausfuehrlich
       />
