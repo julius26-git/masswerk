@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-08-04T21:58:19.805Z",
+        "reason": "Schneidematte als Zeichentisch-Oberflaeche ist das Kernkonzept und vom Nutzer ausdruecklich gewuenscht; die Regel nimmt Blueprint- und Messflaechen selbst aus"
+      }
+    ]
+  }
+}

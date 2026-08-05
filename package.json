@@ -6,12 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "studio": "npm --prefix studio run dev",
+    "studio:deploy": "npm --prefix studio run deploy",
+    "typegen": "npm --prefix studio run typegen",
+    "inhalt:anlegen": "tsx scripts/inhalt-anlegen.mts"
   },
   "dependencies": {
+    "@portabletext/react": "^7.0.1",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.9.0",
     "next": "16.2.12",
+    "next-sanity": "^13.3.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sanity": "^6.9.0",
+    "styled-components": "^6.5.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
+    "tsx": "^4.23.5",
     "typescript": "^5"
   }
 }

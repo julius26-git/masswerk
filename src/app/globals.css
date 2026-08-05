@@ -1,26 +1,965 @@
 @import "tailwindcss";
 
+/* ==================================================================
+   Maßwerk — Designsystem
+   Leitbild: eine Schneidematte auf dem Zeichentisch. Der Hintergrund
+   ist die Matte, jeder Inhalt liegt als Blatt Papier darauf.
+   ================================================================== */
+
+@theme {
+  /* Matte */
+  --color-mat: #16332b;
+  --color-mat-deep: #0e241e;
+
+  /* Papier */
+  --color-paper: #f4f1e6;
+  --color-paper-2: #e9e3d1;
+  --color-paper-3: #d9d1b9;
+
+  /* Tusche */
+  --color-ink: #121714;
+  --color-ink-2: #39443d;
+  --color-ink-3: #55625a;
+
+  /* Signal.
+     Das kräftige Orange trägt genug Kontrast als Fläche, aber nicht als
+     kleine Schrift. Dafür gibt es zwei abgestimmte Varianten: eine dunkle
+     für Papier, eine helle für die Matte. */
+  --color-signal: #ff5a1f;
+  --color-signal-dunkel: #b8350a;
+  --color-signal-hell: #ff7a45;
+  --color-blueprint: #2e56c8;
+
+  --font-display: var(--schrift-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--schrift-text), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--schrift-mono), ui-monospace, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --mat-linie: rgba(233, 240, 225, 0.07);
+  --mat-linie-stark: rgba(233, 240, 225, 0.15);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-blende: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --rand: 1.5px solid var(--color-ink);
+  --schatten-blatt: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
+
+  --leiste: 3.5rem;
+
+  /* Kontextfarben: werden von .blatt überschrieben, damit Etiketten auf
+     Papier und auf der Matte jeweils genug Kontrast haben. */
+  --etikett: var(--color-signal-hell);
+  --etikett-leise: rgba(244, 241, 230, 0.6);
+  --trennlinie: rgba(244, 241, 230, 0.18);
+  /* Signalorange trägt auf der dunklen Matte genug Kontrast, auf Papier nicht.
+     Der Fokusring wechselt deshalb mit dem Untergrund. */
+  --fokus: var(--color-signal);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (min-width: 64rem) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --leiste: 4rem;
   }
 }
 
+/* Eigene Klassen liegen in den Tailwind-Ebenen, damit Hilfsklassen wie
+   `hidden` oder `lg:flex` sie überschreiben können statt umgekehrt. */
+
+@layer base {
+
+/* ------------------------------------------------------------------ */
+/* Grundlagen                                                          */
+/* ------------------------------------------------------------------ */
+
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--leiste) + 2rem);
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-mat);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+}
+
+@layer components {
+
+/* Die Matte: 10er-Raster, jede zehnte Linie kräftiger. */
+.matte {
+  background-color: var(--color-mat);
+  background-image:
+    linear-gradient(var(--mat-linie) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mat-linie) 1px, transparent 1px),
+    linear-gradient(var(--mat-linie-stark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mat-linie-stark) 1px, transparent 1px);
+  background-size:
+    10px 10px,
+    10px 10px,
+    100px 100px,
+    100px 100px;
+  background-position: -1px -1px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Typografie                                                          */
+/* ------------------------------------------------------------------ */
+
+.schrift-display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 112;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.schrift-marke {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.schrift-etikett {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.schrift-wert {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 100;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.titel-xl {
+  font-size: clamp(2.25rem, 1.1rem + 3.9vw, 4rem);
+}
+.titel-l {
+  font-size: clamp(1.875rem, 1.1rem + 2.8vw, 3rem);
+}
+.titel-m {
+  font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);
+}
+.titel-s {
+  font-size: clamp(1.1875rem, 1.05rem + 0.7vw, 1.5rem);
+  line-height: 1.18;
+}
+
+.fliesstext {
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ */
+/* Raster und Blätter                                                  */
+/* ------------------------------------------------------------------ */
+
+.bahn {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.blatt {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--rand);
+  border-radius: 3px;
+  box-shadow: var(--schatten-blatt);
+}
+
+.blatt-flach {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--rand);
+  border-radius: 3px;
+}
+
+.blatt,
+.blatt-flach,
+.auf-papier {
+  --etikett: var(--color-signal-dunkel);
+  --etikett-leise: var(--color-ink-3);
+  --trennlinie: rgba(18, 23, 20, 0.16);
+  --fokus: var(--color-ink);
+}
+
+.auf-signal {
+  background-color: var(--color-signal);
+  color: var(--color-ink);
+  --etikett: var(--color-ink);
+  --etikett-leise: rgba(18, 23, 20, 0.9);
+  --trennlinie: rgba(18, 23, 20, 0.26);
+  --fokus: var(--color-ink);
+}
+
+.etikett {
+  color: var(--etikett);
+}
+
+.etikett-leise {
+  color: var(--etikett-leise);
+}
+
+.trennlinie {
+  border-color: var(--trennlinie);
+}
+
+/* Markierung wie mit dem Textmarker über der Grundlinie. Die Schrift
+   bleibt tiefschwarz, damit der Kontrast stimmt. */
+.markierung {
+  background-image: linear-gradient(
+    transparent 58%,
+    rgba(255, 90, 31, 0.9) 58%,
+    rgba(255, 90, 31, 0.9) 94%,
+    transparent 94%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding-inline: 0.06em;
+}
+
+/* Millimeterpapier für eingelegte Flächen. */
+.papier-raster {
+  background-image:
+    linear-gradient(rgba(18, 23, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 23, 20, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Schaltflächen und Links                                             */
+/* ------------------------------------------------------------------ */
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.8125rem 1.375rem;
+  border: var(--rand);
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  min-height: 2.875rem;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms var(--ease-out);
+}
+
+.knopf:active {
+  transform: scale(0.97);
+}
+
+.knopf-signal {
+  background-color: var(--color-signal);
+  color: var(--color-ink);
+  box-shadow: 3px 3px 0 0 var(--color-ink);
+  --fokus: var(--color-ink);
+}
+
+.knopf-papier {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: 3px 3px 0 0 var(--color-ink);
+  --fokus: var(--color-ink);
+}
+
+.knopf-tinte {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.knopf-umriss {
+  background-color: transparent;
+  color: var(--color-ink);
+  border-color: rgba(18, 23, 20, 0.55);
+  --fokus: var(--color-ink);
+}
+
+.knopf-linie {
+  background-color: transparent;
+  color: var(--color-paper);
+  border-color: rgba(244, 241, 230, 0.42);
+}
+
+.knopf[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .knopf-signal:not([disabled]):hover,
+  .knopf-papier:not([disabled]):hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 var(--color-ink);
+  }
+
+  .knopf-tinte:not([disabled]):hover {
+    transform: translate(-1px, -1px);
+  }
+
+  .knopf-umriss:not([disabled]):hover {
+    background-color: var(--color-paper-2);
+    border-color: var(--color-ink);
+  }
+
+  .knopf-linie:not([disabled]):hover {
+    background-color: rgba(244, 241, 230, 0.1);
+    border-color: var(--color-paper);
+  }
+
+  .knopf:not([disabled]):hover .pfeil {
+    transform: translateX(3px);
+  }
+}
+
+.pfeil {
+  transition: transform 200ms var(--ease-out);
+}
+
+.textlink {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  padding-bottom: 1px;
+  transition: background-size 240ms var(--ease-out);
+}
+
+/* Beim Zeigen läuft die Unterstreichung einmal durch und steht danach
+   wieder — sie verschwindet nicht, sonst wäre der Zustand schwächer
+   als der Ausgangszustand. */
+@media (hover: hover) and (pointer: fine) {
+  .textlink:hover {
+    animation: unterstrich 380ms var(--ease-out);
+  }
+}
+
+@keyframes unterstrich {
+  0% {
+    background-size: 100% 1px;
+    background-position: 100% 100%;
+  }
+  49.9% {
+    background-size: 0 1px;
+    background-position: 100% 100%;
+  }
+  50% {
+    background-size: 0 1px;
+    background-position: 0 100%;
+  }
+  100% {
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Sprungmarke                                                         */
+/* ------------------------------------------------------------------ */
+
+.sprungmarke {
+  --fokus: var(--color-ink);
+  position: fixed;
+  top: calc(0.5rem + env(safe-area-inset-top));
+  left: 50%;
+  z-index: 90;
+  transform: translate(-50%, -220%);
+  padding: 0.75rem 1.25rem;
+  background: var(--color-signal);
+  color: var(--color-ink);
+  border: var(--rand);
+  border-radius: 2px;
+  font-weight: 600;
+  transition: transform 200ms var(--ease-out);
+}
+
+.sprungmarke:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Startsequenz                                                        */
+/* ------------------------------------------------------------------ */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-mat-deep);
+  animation:
+    intro-weg 640ms var(--ease-blende) 1280ms forwards,
+    intro-durchlassen 1ms linear 1280ms forwards,
+    intro-aus 1ms linear 1920ms forwards;
+}
+
+/* Wer nicht warten will, klickt oder tippt: dann springt die Sequenz ans Ende. */
+.intro[data-uebersprungen="ja"] {
+  animation: none;
+  transform: translateY(-101%);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-satz {
+  position: relative;
+  width: min(30rem, 78vw);
+}
+
+/* Die Linie wird gezogen wie ein Maßband, das man herauszieht. */
+.intro-linie {
+  height: 1.5px;
+  background: var(--color-signal);
+  transform-origin: left center;
+  animation: intro-ziehen 560ms var(--ease-blende) 80ms both;
+}
+
+.intro-teilung {
+  height: 0.75rem;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(244, 241, 230, 0.55) 0 1px,
+    transparent 1px 10px
+  );
+  clip-path: inset(0 100% 0 0);
+  animation: intro-freilegen 560ms var(--ease-blende) 140ms both;
+}
+
+.intro-marke {
+  margin-top: 1.25rem;
+  color: var(--color-paper);
+  font-size: clamp(2.25rem, 9vw, 3.75rem);
+  clip-path: inset(0 100% 0 0);
+  animation: intro-freilegen 520ms var(--ease-blende) 420ms both;
+}
+
+.intro-claim {
+  margin-top: 0.5rem;
+  color: rgba(244, 241, 230, 0.62);
+  animation: intro-auftauchen 420ms var(--ease-out) 780ms both;
+}
+
+@keyframes intro-ziehen {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes intro-freilegen {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes intro-auftauchen {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-weg {
+  to {
+    transform: translateY(-101%);
+  }
+}
+
+@keyframes intro-durchlassen {
+  to {
+    pointer-events: none;
+  }
+}
+
+@keyframes intro-aus {
+  to {
+    visibility: hidden;
+  }
+}
+
+html[data-intro="aus"] .intro {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Maßband am linken Rand                                              */
+/* ------------------------------------------------------------------ */
+
+.massband {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  body {
+    padding-left: 3rem;
+  }
+
+  .massband {
+    display: block;
+    position: fixed;
+    inset-block: 0;
+    left: 0;
+    width: 3rem;
+    z-index: 40;
+    border-right: 1px solid rgba(244, 241, 230, 0.14);
+    pointer-events: none;
+  }
+}
+
+.massband-teilung {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: 0.5rem;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(244, 241, 230, 0.22) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+.massband-teilung-gross {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: 1rem;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(244, 241, 230, 0.42) 0 1px,
+    transparent 1px 50px
+  );
+}
+
+.massband-schieber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+.massband-strich {
+  height: 1.5px;
+  background: var(--color-signal);
+}
+
+.massband-nummer {
+  margin-top: 0.375rem;
+  padding-left: 0.5rem;
+  color: var(--color-signal);
+}
+
+.massband-name {
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  writing-mode: vertical-rl;
+  color: rgba(244, 241, 230, 0.55);
+  transition: opacity 200ms ease;
+}
+
+/* ------------------------------------------------------------------ */
+/* Kopfleiste                                                          */
+/* ------------------------------------------------------------------ */
+
+.kopfleiste {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-top: calc(0.625rem + env(safe-area-inset-top));
+  padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+}
+
+@media (min-width: 64rem) {
+  .kopfleiste {
+    left: 3rem;
+  }
+}
+
+.kopfleiste-balken {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 3.25rem;
+  padding-inline: 0.5rem 0.5rem;
+}
+
+.navi-link {
+  position: relative;
+  padding: 0.5rem 0.625rem;
+  color: var(--color-ink-2);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.navi-link[aria-current="page"],
+.navi-link:hover {
+  color: var(--color-ink);
+}
+
+.navi-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0.625rem;
+  right: 0.625rem;
+  bottom: 0.25rem;
+  height: 1.5px;
+  background: var(--color-signal);
+}
+
+.menue-flaeche {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-mat-deep);
+  transition:
+    opacity 200ms var(--ease-out),
+    visibility 200ms;
+}
+
+.menue-flaeche[data-offen="nein"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menue-blatt {
+  transition: transform 260ms var(--ease-blende);
+}
+
+.menue-flaeche[data-offen="nein"] .menue-blatt {
+  transform: translateY(-16px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Formular                                                            */
+/* ------------------------------------------------------------------ */
+
+.feld {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 0.875rem;
+  min-height: 2.875rem;
+  background-color: var(--color-paper-2);
+  color: var(--color-ink);
+  border: 1.5px solid rgba(18, 23, 20, 0.55);
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.feld::placeholder {
+  color: var(--color-ink-3);
+}
+
+.feld:hover {
+  border-color: var(--color-ink);
+}
+
+.feld:focus {
+  outline: none;
+  background-color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+
+.feld:focus-visible {
+  outline: 3px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+.feld-fehler {
+  border-color: var(--color-signal-dunkel);
+}
+
+textarea.feld {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.kaestchen {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background-color: var(--color-paper-2);
+  border: 1.5px solid rgba(18, 23, 20, 0.55);
+  touch-action: manipulation;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease;
+}
+
+.kaestchen:checked {
+  background-color: var(--color-signal);
+  border-color: var(--color-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5 L6.5 11.5 L12.5 4.5' fill='none' stroke='%23121714' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Häufige Fragen                                                      */
+/* ------------------------------------------------------------------ */
+
+.frage summary::-webkit-details-marker {
+  display: none;
+}
+
+.frage summary:focus-visible {
+  outline-offset: -3px;
+}
+
+.frage-zeichen {
+  transition: transform 200ms var(--ease-out);
+}
+
+.frage[open] .frage-zeichen {
+  transform: rotate(135deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .frage summary:hover {
+    background-color: var(--color-paper-2);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Laufband                                                            */
+/* ------------------------------------------------------------------ */
+
+.laufband {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-signal);
+  color: var(--color-ink);
+  border-block: var(--rand);
+}
+
+.laufband-spur {
+  display: flex;
+  width: max-content;
+  animation: laufband 42s linear infinite;
+}
+
+.laufband:focus-within .laufband-spur,
+.laufband[data-lauf="aus"] .laufband-spur {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .laufband:hover .laufband-spur {
+    animation-play-state: paused;
+  }
+}
+
+.laufband-schalter {
+  --fokus: var(--color-ink);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 100%;
+  border-left: var(--rand);
+  background: var(--color-signal);
+  color: var(--color-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.laufband-posten {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+}
+
+.laufband-spur {
+  padding-right: 2.75rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bewegung                                                            */
+/* ------------------------------------------------------------------ */
+
+/* Der Startzustand gilt nur, wenn JavaScript läuft — sonst bliebe der
+   Inhalt unsichtbar. */
+html[data-js] [data-auftritt] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 620ms var(--ease-out),
+    transform 620ms var(--ease-out);
+  transition-delay: var(--verzug, 0ms);
+}
+
+html[data-js] [data-auftritt="sichtbar"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bauplan im Aufmacher                                                */
+/* ------------------------------------------------------------------ */
+
+.riss {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.riss path,
+.riss line,
+.riss rect,
+.riss circle,
+.riss polyline {
+  vector-effect: non-scaling-stroke;
+}
+
+.riss .zug {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: strich-ziehen 900ms var(--ease-in-out) both;
+}
+
+.riss .fuellung {
+  animation: intro-auftauchen 460ms var(--ease-out) both;
+}
+
+.riss .beschriftung {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--color-ink-3);
+  /* Nur Deckkraft: die Beschriftungen tragen ein eigenes transform-Attribut
+     zum Drehen, das eine Transform-Animation überschreiben würde. */
+  animation: einblenden 460ms var(--ease-out) both;
+}
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes strich-ziehen {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes laufband {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blinken {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Muss die gleiche Spezifität schlagen wie der versteckte Startzustand,
+     sonst bliebe Inhalt bis zum Eintreffen des Beobachters unsichtbar. */
+  html[data-js] [data-auftritt] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 }
