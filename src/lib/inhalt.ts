@@ -47,7 +47,20 @@ import type {
 } from "./typen";
 import { verschmelze } from "./verschmelze";
 
-type Optionen = { stega?: boolean };
+/**
+ * `stega` lässt sich hier nur ausschalten, nie einschalten — und das mit Absicht.
+ *
+ * Stega hängt an jeden Text unsichtbare Steuerzeichen, damit sich Inhalte in der
+ * Sanity-Vorschau anklicken lassen. `sanityFetch` entscheidet von selbst richtig:
+ * eingeschaltet im Vorschaumodus, sonst aus. Wer den Wert explizit übergibt,
+ * hebelt diese Entscheidung aus — dann landen die Zeichen auch in der
+ * Produktion, in Telefonnummern und in `tel:`-Verweisen.
+ *
+ * Deshalb wird `stega` unten nur weitergereicht, wenn es ausdrücklich auf
+ * `false` steht. Das ist bei Metadaten nötig, die auch in der Vorschau sauber
+ * bleiben müssen.
+ */
+type Optionen = { stega?: false };
 
 /**
  * Holt Daten aus Sanity. Fällt die Verbindung aus oder ist das Feld leer,
@@ -56,10 +69,13 @@ type Optionen = { stega?: boolean };
 async function hole<T>(
   query: Parameters<typeof sanityFetch>[0]["query"],
   standard: T,
-  { stega = true }: Optionen = {},
+  optionen: Optionen = {},
 ): Promise<T> {
   try {
-    const { data } = await sanityFetch({ query, stega });
+    const { data } = await sanityFetch({
+      query,
+      ...(optionen.stega === false && { stega: false }),
+    });
     return verschmelze(standard, data);
   } catch (fehler) {
     console.error("Sanity nicht erreichbar, verwende Standardinhalt.", fehler);
@@ -117,7 +133,7 @@ export async function holeRechtstext(
     const { data } = await sanityFetch({
       query: RECHTSTEXT_QUERY,
       params: { slug },
-      stega: optionen.stega ?? true,
+      ...(optionen.stega === false && { stega: false }),
     });
     return verschmelze(standard, data);
   } catch (fehler) {
