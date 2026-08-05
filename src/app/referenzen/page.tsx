@@ -4,12 +4,7 @@ import { Auftritte } from "@/components/auftritte";
 import { Seitenkopf } from "@/components/seitenkopf";
 import { Referenzen } from "@/components/sektionen/referenzen";
 import { Schlussruf } from "@/components/sektionen/schlussruf";
-import {
-  holeGrundeinstellungen,
-  holeReferenzen,
-  holeReferenzseite,
-  holeStartseite,
-} from "@/lib/inhalt";
+import { holeReferenzen, holeReferenzseite, holeStartseite } from "@/lib/inhalt";
 import { metadatenAus } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,10 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ReferenzenSeite() {
-  const [seite, referenzen, einstellungen, startseite] = await Promise.all([
+  const [seite, referenzen, startseite] = await Promise.all([
     holeReferenzseite(),
     holeReferenzen(),
-    holeGrundeinstellungen(),
     holeStartseite(),
   ]);
 
@@ -31,15 +25,11 @@ export default async function ReferenzenSeite() {
 
       <Seitenkopf kopf={seite.kopf} name="Referenzen" />
 
-      <Referenzen
-        referenzen={referenzen}
-        hinweis={seite.platzhalterHinweis}
-      />
+      <Referenzen referenzen={referenzen} hinweis={seite.platzhalterHinweis} />
 
       <Schlussruf
         kopf={startseite.schlussKopf}
         aktion={startseite.schlussAktion}
-        einstellungen={einstellungen}
       />
     </>
   );

@@ -92,7 +92,6 @@ export default async function UeberMichSeite() {
       <Schlussruf
         kopf={startseite.schlussKopf}
         aktion={startseite.schlussAktion}
-        einstellungen={einstellungen}
       />
     </>
   );

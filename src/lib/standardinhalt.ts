@@ -33,6 +33,7 @@ export const standardGrundeinstellungen: Grundeinstellungen = {
     "Kein Cookie-Banner",
     "Festpreis vor Projektstart",
     "Ein Ansprechpartner",
+    "Sprachmodell auf deutschen Servern",
     "DSGVO-konform gebaut",
   ],
   telefon: "+49 151 00000000", // ANPASSEN
@@ -73,12 +74,11 @@ export const standardStartseite: Startseite = {
     titel: "Was ich auf den meisten Betriebswebsites finde",
     text: "Kein Vorwurf, sondern eine Bestandsaufnahme. Die Seite wurde vor Jahren gebaut, danach hatte niemand Zeit. Das kennt fast jeder Betrieb.",
   },
+  // Drei Punkte reichen. Wer sich in dreien wiedererkennt, erkennt sich
+  // auch in sechs — die weiteren drei sagen dasselbe noch einmal.
   maengel: [
     "Auf dem Handy muss man zoomen, um die Telefonnummer zu treffen.",
-    "Bis das erste Bild da ist, vergehen acht Sekunden.",
     "Bewerbungen gehen nur per E-Mail, mit vollständigen Unterlagen.",
-    "Der letzte Eintrag unter „Aktuelles“ ist von 2019.",
-    "Bei Google steht der Wettbewerber zwei Straßen weiter oben.",
     "Niemand weiß mehr, wer das Passwort zum Bearbeiten hat.",
   ],
   loesung: {
@@ -111,7 +111,7 @@ export const standardStartseite: Startseite = {
   leistungenKopf: {
     kennzeichnung: "Leistungen",
     titel: "Was dazugehört",
-    text: "Vier Bausteine. Einzeln möglich, zusammen sinnvoll.",
+    text: "Einzeln möglich, zusammen sinnvoll.",
   },
   ablaufKopf: {
     kennzeichnung: "Ablauf",
@@ -121,7 +121,7 @@ export const standardStartseite: Startseite = {
   referenzenKopf: {
     kennzeichnung: "Referenzen",
     titel: "Gebaute Seiten",
-    text: "Zwei Prototypen zeigen, wie ich arbeite. Sobald die ersten Kundenprojekte online sind, stehen sie hier.",
+    text: "Ein Kundenprojekt in Arbeit und eine Gestaltungsstudie zum Anschauen.",
   },
   medienKopf: {
     kennzeichnung: "Bild & Film",
@@ -215,6 +215,23 @@ export const standardLeistungen: Leistung[] = [
     beschreibung: null,
   },
   {
+    _id: "leistung-assistent",
+    titel: "KI-Assistent für Standardfragen",
+    slug: "ki-assistent",
+    bereich: "website",
+    versprechen: "Das Telefon klingelt seltener wegen Fragen, die auf der Seite stehen.",
+    teaser:
+      "Ein Assistent auf Ihrer Website beantwortet die immer gleichen Fragen: Öffnungszeiten, Ablauf, was zu einer Reparatur nötig ist. Er antwortet nur aus dem, was Sie hinterlegt haben, und erfindet nichts dazu.",
+    umfang: [
+      "Antworten kommen aus Ihren Angaben, nicht aus dem Internet",
+      "Das Sprachmodell läuft bei einem deutschen Anbieter",
+      "Kein Gesprächsverlauf wird gespeichert oder protokolliert",
+      "Weiß der Assistent nicht weiter, verweist er aufs Telefon",
+      "Fragen und Antworten pflegen Sie selbst",
+    ],
+    beschreibung: null,
+  },
+  {
     _id: "leistung-seo",
     titel: "Local SEO & Google-Profil",
     slug: "local-seo",
@@ -297,29 +314,29 @@ export const standardArbeitsschritte: Arbeitsschritt[] = [
 
 export const standardReferenzen: Referenz[] = [
   {
-    _id: "referenz-zimmerei",
-    titel: "Zimmerei Berg",
-    slug: "zimmerei-berg",
-    status: "platzhalter",
-    jahr: null,
+    _id: "referenz-reuther",
+    titel: "Rollladen Reuther",
+    slug: "rollladen-reuther",
+    status: "inArbeit",
+    jahr: 2026,
     auftrag:
-      "Gesellen und Auszubildende gewinnen, ohne für Stellenportale zu zahlen.",
-    adresse: null,
-    branche: { titel: "Handwerk & Bau", material: "holz" },
+      "Sonnenschutz-Fachbetrieb mit zwölf Produktgruppen. Die Seite sortiert Anfragen vor, und der Assistent „Sunny“ beantwortet, was sonst das Telefon blockiert.",
+    adresse: "https://reuther-website.vercel.app/",
+    branche: { titel: "Handwerk & Bau", material: "beton" },
     ergebnisse: [],
     bildNachher: null,
     bildVorher: null,
   },
   {
-    _id: "referenz-werkstatt",
-    titel: "KFZ-Meisterbetrieb Nord",
-    slug: "kfz-meisterbetrieb-nord",
+    _id: "referenz-northline",
+    titel: "Northline",
+    slug: "northline",
     status: "platzhalter",
-    jahr: null,
+    jahr: 2026,
     auftrag:
-      "Termine für Reifenwechsel online annehmen, statt sie am Telefon zu sortieren.",
-    adresse: null,
-    branche: { titel: "Werkstatt & Dienstleistung", material: "stahl" },
+      "Eine Gestaltungsstudie für möbliertes Wohnen: Standorte, Zimmer und Leistungen so aufbereitet, dass eine Besichtigung nur einen Klick entfernt ist.",
+    adresse: "https://unit-style-web.vercel.app/",
+    branche: null,
     ergebnisse: [],
     bildNachher: null,
     bildVorher: null,
@@ -401,7 +418,7 @@ export const standardFragen: Frage[] = [
 export const standardLeistungsseite: Leistungsseite = {
   kopf: {
     kennzeichnung: "Leistungen",
-    titel: "Vier Bausteine, ein Ergebnis",
+    titel: "Die Bausteine, ein Ergebnis",
     text: "Eine Website ist kein Selbstzweck. Sie soll Anfragen bringen, Bewerbungen bringen und in Ruhe laufen. Danach sind diese Leistungen geschnitten.",
   },
   preishinweis:
@@ -429,14 +446,14 @@ export const standardReferenzseite: Referenzseite = {
   kopf: {
     kennzeichnung: "Referenzen",
     titel: "Gebaute Seiten",
-    text: "Was ich zeige, zeige ich vollständig: Auftrag, Umsetzung und — sobald sie vorliegen — echte Zahlen.",
+    text: "Was ich zeige, zeige ich vollständig: Auftrag, Umsetzung und — sobald sie vorliegen — echte Zahlen. Was noch nicht öffentlich ist, sage ich dazu."
   },
   platzhalterHinweis:
-    "Diese Projekte sind Prototypen, keine Kundenprojekte. Sie zeigen Aufbau, Tempo und Bedienung an einem erfundenen Betrieb. Erfundene Erfolgszahlen finden Sie hier nicht — die stehen erst dann hier, wenn sie echt sind.",
+    "Als „Prototyp“ markierte Projekte sind Gestaltungsstudien für erfundene Betriebe — gebaut, um Aufbau, Tempo und Bedienung zu zeigen. Erfundene Erfolgszahlen finden Sie nirgends: Die stehen erst hier, wenn sie echt sind.",
   seo: {
     titel: "Referenzen",
     beschreibung:
-      "Prototypen und Kundenprojekte von Dörmann Digital: Aufbau, Tempo und Bedienung zum Anschauen.",
+      "Kundenprojekte und Gestaltungsstudien von Dörmann Digital: Aufbau, Tempo und Bedienung zum Anschauen.",
     bild: null,
     vonSucheAusschliessen: false,
   },

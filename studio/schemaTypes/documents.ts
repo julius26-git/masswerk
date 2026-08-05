@@ -215,9 +215,10 @@ export const referenz = defineType({
     defineField({
       name: "branche",
       title: "Branche",
+      description:
+        "Optional. Eigene Studien und Musterprojekte gehören in keine Kundenbranche.",
       type: "reference",
       to: [{ type: "branche" }],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "jahr",

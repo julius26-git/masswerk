@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { Auftritte } from "@/components/auftritte";
-import { Ablauf } from "@/components/sektionen/ablauf";
 import { Aufmacher } from "@/components/sektionen/aufmacher";
 import { Branchen } from "@/components/sektionen/branchen";
 import { Leistungsverzeichnis } from "@/components/sektionen/leistungsverzeichnis";
@@ -11,7 +10,6 @@ import { Referenzen } from "@/components/sektionen/referenzen";
 import { Schlussruf } from "@/components/sektionen/schlussruf";
 import { Vorteile } from "@/components/sektionen/vorteile";
 import {
-  holeArbeitsschritte,
   holeBranchen,
   holeGrundeinstellungen,
   holeLeistungen,
@@ -32,7 +30,6 @@ export default async function Startseite() {
     einstellungen,
     branchen,
     leistungen,
-    schritte,
     referenzen,
     referenzseite,
   ] = await Promise.all([
@@ -40,7 +37,6 @@ export default async function Startseite() {
     holeGrundeinstellungen(),
     holeBranchen(),
     holeLeistungen(),
-    holeArbeitsschritte(),
     holeReferenzen(),
     holeReferenzseite(),
   ]);
@@ -66,8 +62,6 @@ export default async function Startseite() {
         weiterlesen={{ beschriftung: "Alle Leistungen im Detail", ziel: "/leistungen" }}
       />
 
-      <Ablauf kopf={seite.ablaufKopf} schritte={schritte} />
-
       {seite.medienAnzeigen ? (
         <Medien kopf={seite.medienKopf} leistungen={medienLeistungen} />
       ) : null}
@@ -82,7 +76,6 @@ export default async function Startseite() {
       <Schlussruf
         kopf={seite.schlussKopf}
         aktion={seite.schlussAktion}
-        einstellungen={einstellungen}
       />
     </>
   );

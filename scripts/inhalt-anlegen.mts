@@ -42,12 +42,26 @@ const client = createClient({
 
 type Dokument = Record<string, unknown> & { _id: string; _type: string };
 
+/** Felder, die Bilder halten. Sie entstehen im Studio, nicht hier. */
+const BILDFELDER = ["bildNachher", "bildVorher", "portrait"] as const;
+
 async function anlegen(dokumente: Dokument[]) {
   let angelegt = 0;
 
   for (const dokument of dokumente) {
     if (ueberschreiben) {
-      await client.createOrReplace(dokument);
+      // Hochgeladene Bilder überleben das Überschreiben. Sonst würde ein
+      // Lauf dieses Skripts jeden Screenshot aus den Referenzen werfen.
+      const vorhanden = (await client.getDocument(dokument._id)) as
+        | Record<string, unknown>
+        | undefined;
+      const bilder = Object.fromEntries(
+        BILDFELDER.filter((feld) => vorhanden?.[feld] !== undefined).map(
+          (feld) => [feld, vorhanden![feld]],
+        ),
+      );
+
+      await client.createOrReplace({ ...dokument, ...bilder });
       angelegt += 1;
     } else {
       const vorhanden = await client.getDocument(dokument._id);
@@ -70,6 +84,11 @@ function mitSchluessel<T extends Record<string, unknown>>(
     ...eintrag,
   }));
 }
+
+/** Welche Referenz zu welcher Branche gehört. Fehlt ein Eintrag, bleibt das Feld leer. */
+const BRANCHE_JE_REFERENZ: Record<string, string> = {
+  "referenz-reuther": "branche-handwerk",
+};
 
 const s = standardStartseite;
 const g = standardGrundeinstellungen;
@@ -217,11 +236,18 @@ const dokumente: Dokument[] = [
     titel: referenz.titel,
     slug: { _type: "slug", current: referenz.slug },
     status: referenz.status,
+    jahr: referenz.jahr ?? undefined,
+    adresse: referenz.adresse ?? undefined,
     auftrag: referenz.auftrag,
-    branche: {
-      _type: "reference",
-      _ref: index === 0 ? "branche-handwerk" : "branche-werkstatt",
-    },
+    // Nicht jede Referenz gehört in eine Kundenbranche — Studien nicht.
+    ...(BRANCHE_JE_REFERENZ[referenz._id]
+      ? {
+          branche: {
+            _type: "reference",
+            _ref: BRANCHE_JE_REFERENZ[referenz._id],
+          },
+        }
+      : {}),
     reihenfolge: (index + 1) * 10,
   })),
 

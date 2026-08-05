@@ -283,7 +283,7 @@ export type Referenz = {
   titel: string;
   slug: Slug;
   status: "live" | "inArbeit" | "platzhalter";
-  branche: BrancheReference;
+  branche?: BrancheReference;
   jahr?: number;
   auftrag: string;
   leistungen?: Array<
@@ -651,7 +651,7 @@ export type REFERENZEN_QUERY_RESULT = Array<{
   branche: {
     titel: string;
     material: "beton" | "daemmung" | "holz" | "stahl";
-  };
+  } | null;
   ergebnisse:
     | Array<{
         _key: string;

@@ -11,7 +11,6 @@ import { Schlussruf } from "@/components/sektionen/schlussruf";
 import {
   holeArbeitsschritte,
   holeFragen,
-  holeGrundeinstellungen,
   holeLeistungen,
   holeLeistungsseite,
   holeStartseite,
@@ -24,15 +23,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function LeistungenSeite() {
-  const [seite, leistungen, schritte, fragen, einstellungen, startseite] =
-    await Promise.all([
-      holeLeistungsseite(),
-      holeLeistungen(),
-      holeArbeitsschritte(),
-      holeFragen(),
-      holeGrundeinstellungen(),
-      holeStartseite(),
-    ]);
+  const [seite, leistungen, schritte, fragen, startseite] = await Promise.all([
+    holeLeistungsseite(),
+    holeLeistungen(),
+    holeArbeitsschritte(),
+    holeFragen(),
+    holeStartseite(),
+  ]);
 
   const webLeistungen = leistungen.filter((l) => l.bereich !== "medien");
   const medienLeistungen = leistungen.filter((l) => l.bereich === "medien");
@@ -80,7 +77,6 @@ export default async function LeistungenSeite() {
       <Schlussruf
         kopf={startseite.schlussKopf}
         aktion={startseite.schlussAktion}
-        einstellungen={einstellungen}
       />
     </>
   );

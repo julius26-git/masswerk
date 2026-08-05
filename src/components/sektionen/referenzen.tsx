@@ -12,6 +12,13 @@ const statusText = {
   platzhalter: "Prototyp",
 } as const;
 
+/** Was hinter dem Link steckt, hängt am Status — eine Vorschau ist keine Website. */
+const linkText = {
+  live: "Website ansehen",
+  inArbeit: "Vorschau ansehen",
+  platzhalter: "Studie ansehen",
+} as const;
+
 function Statuszeichen({ status }: { status: Referenz["status"] }) {
   const istEcht = status === "live";
 
@@ -73,6 +80,8 @@ export function Referenzen({
                     width={1200}
                     height={750}
                     sizes="(min-width: 1024px) 40vw, 100vw"
+                    // Das erste Bild ist meist das größte Element beim Laden.
+                    priority={index === 0}
                     className="aspect-[8/5] w-full object-cover"
                   />
                 ) : (
@@ -128,7 +137,7 @@ export function Referenzen({
                       rel="noreferrer noopener"
                       target="_blank"
                     >
-                      Website ansehen
+                      {linkText[referenz.status]}
                     </a>
                   </p>
                 ) : null}
