@@ -434,7 +434,7 @@ export const standardLeistungsseite: Leistungsseite = {
   seo: {
     titel: "Leistungen",
     beschreibung:
-      "Website-Neubau, Mitarbeiter-Funnel, Local SEO und laufende Betreuung — vier Bausteine für lokale Betriebe, zum Festpreis.",
+      "Website-Neubau, Mitarbeitergewinnung, Local SEO und laufende Betreuung — vier Bausteine für lokale Betriebe, zum Festpreis.",
     bild: null,
     vonSucheAusschliessen: false,
   },
