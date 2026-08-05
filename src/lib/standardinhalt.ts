@@ -24,10 +24,10 @@ import type {
 export const standardGrundeinstellungen: Grundeinstellungen = {
   name: "Maßwerk",
   claim: "Websites nach Maß für lokale Betriebe",
-  verfuegbarkeit: "Zwei Projektplätze im laufenden Quartal frei",
+  verfuegbarkeit: "Ich nehme derzeit neue Projekte an",
   laufband: [
-    "Ladezeit unter einer Sekunde",
-    "Bewerbung in 60 Sekunden",
+    "Schnell auch bei schlechtem Netz",
+    "Bewerben ohne Unterlagen",
     "Kein Cookie-Banner",
     "Festpreis vor Projektstart",
     "Ein Ansprechpartner",
@@ -47,7 +47,7 @@ export const standardGrundeinstellungen: Grundeinstellungen = {
   seo: {
     titel: "Maßwerk — Websites nach Maß für lokale Betriebe",
     beschreibung:
-      "Websites für Handwerk, Werkstatt, Praxis und Laden: schnell, ohne Cookie-Banner, mit einem Bewerbungsformular, das in 60 Sekunden ausgefüllt ist. Zum Festpreis.",
+      "Websites für Handwerk, Werkstatt, Praxis und Laden: schnell, ohne Cookie-Banner, mit einer Stellenseite, über die sich Leute ohne Unterlagen melden. Zum Festpreis.",
     bild: null,
     vonSucheAusschliessen: false,
   },
@@ -58,27 +58,29 @@ export const standardStartseite: Startseite = {
   ueberschrift: "Aufträge gewinnen. Mitarbeiter finden. Mit einer Website, die beides kann.",
   hervorhebung: "Mitarbeiter finden.",
   einleitung:
-    "Ich baue Websites für Betriebe, die von ihrer Region leben. Schnell genug, dass niemand vorher abspringt. Einfach genug, dass sich ein Geselle in der Mittagspause vom Handy aus bewirbt. Und zum Festpreis, der vor dem ersten Handschlag feststeht.",
+    "Ich baue Websites für Betriebe, die von ihrer Region leben. Schnell genug, dass niemand vorher abspringt. So gebaut, dass Kunden anrufen und sich Leute bewerben, ohne vorher Unterlagen zusammenzusuchen. Und zum Festpreis, der vor dem ersten Handschlag feststeht.",
   hauptaktion: { beschriftung: "Website-Check anfordern", ziel: "/kontakt" },
   nebenaktion: { beschriftung: "Leistungen ansehen", ziel: "/leistungen" },
   kennzahlen: [
+    // Keine gemessenen Werte, sondern drei Zusagen: Sie hängen an meiner
+    // Arbeitsweise, nicht an einer Messung, die beim Kunden anders ausfällt.
     {
       _key: "k1",
-      wert: "< 1 s",
-      label: "Ladezeit",
-      erlaeuterung: "Auch mit einem Balken Empfang auf der Baustelle.",
+      wert: "Festpreis",
+      label: "Angebot",
+      erlaeuterung: "Der Preis steht vor dem ersten Handschlag und ändert sich nicht.",
     },
     {
       _key: "k2",
-      wert: "60 Sek.",
-      label: "Bewerbung",
-      erlaeuterung: "Ohne Lebenslauf, ohne Anschreiben, ohne Drucker.",
+      wert: "Einer",
+      label: "Ansprechpartner",
+      erlaeuterung: "Sie reden mit mir, nicht mit einem Kundenkonto.",
     },
     {
       _key: "k3",
-      wert: "0",
+      wert: "Keins",
       label: "Cookie-Banner",
-      erlaeuterung: "Kein Tracking, also auch keine Einwilligung nötig.",
+      erlaeuterung: "Ohne Tracking braucht es keine Einwilligung.",
     },
   ],
   ausgangslage: {
@@ -112,8 +114,8 @@ export const standardStartseite: Startseite = {
     },
     {
       _key: "v3",
-      titel: "Bewerben dauert eine Minute",
-      text: "Name, Telefonnummer, was man kann. Mehr fragt das Formular nicht. Wer wechseln will, tut das in der Pause — nicht abends am Drucker.",
+      titel: "Bewerben ohne Hürde",
+      text: "Wer wechseln will, sitzt selten am Schreibtisch. Deshalb fragt Ihre Stellenseite nur das ab, was für den ersten Kontakt zählt. Unterlagen kommen später — wenn überhaupt.",
     },
   ],
   branchenKopf: {
@@ -151,7 +153,7 @@ export const standardStartseite: Startseite = {
   seo: {
     titel: "Maßwerk — Websites nach Maß für lokale Betriebe",
     beschreibung:
-      "Schnelle Websites für Handwerk, Werkstatt, Praxis und Laden. Mit Bewerbungsformular für die Mitarbeitersuche, ohne Cookie-Banner, zum Festpreis.",
+      "Schnelle Websites für Handwerk, Werkstatt, Praxis und Laden. Mit einer Stellenseite für die Mitarbeitersuche, ohne Cookie-Banner, zum Festpreis.",
     bild: null,
     vonSucheAusschliessen: false,
   },
@@ -212,17 +214,17 @@ export const standardLeistungen: Leistung[] = [
   },
   {
     _id: "leistung-funnel",
-    titel: "Mitarbeiter-Funnel",
-    slug: "mitarbeiter-funnel",
+    titel: "Mitarbeitergewinnung",
+    slug: "mitarbeitergewinnung",
     bereich: "website",
-    versprechen: "Bewerbungen kommen von der Baustelle statt gar nicht.",
+    versprechen: "Ihre Website wird der Weg, auf dem sich Leute bei Ihnen melden.",
     teaser:
-      "Eine eigene Seite für offene Stellen und ein Formular, das drei Fragen stellt. Wer sich bewirbt, braucht kein Anschreiben und keinen Lebenslauf — nur ein Handy und eine Minute.",
+      "Eine eigene Seite für offene Stellen und ein Weg zur Kontaktaufnahme, der so kurz ist wie möglich. Wie kurz genau, entscheiden wir gemeinsam — je nachdem, wen Sie suchen und was Sie vorab wirklich wissen müssen.",
     umfang: [
-      "Stellenseite je Position, in Ihrer Sprache geschrieben",
-      "Kurzbewerbung: Name, Telefon, was man kann",
+      "Eigene Seite je offener Stelle, in Ihrer Sprache geschrieben",
+      "Erster Kontakt ohne Lebenslauf und Anschreiben",
       "Rückruf-Wunsch statt E-Mail-Pingpong",
-      "Benachrichtigung aufs Handy, sobald jemand abschickt",
+      "Benachrichtigung aufs Handy, sobald sich jemand meldet",
       "Ehrliche Einblicke: Team, Fuhrpark, Baustelle",
     ],
     beschreibung: null,
@@ -347,10 +349,10 @@ export const standardFragen: Frage[] = [
     frage: "Was kostet eine Website bei Ihnen?",
     antwort: [
       absatz(
-        "Eine vollständige Website mit fünf bis acht Seiten liegt zwischen 2.500 und 5.500 Euro. Kommt der Mitarbeiter-Funnel dazu, sind es 800 bis 1.500 Euro mehr. Die Betreuung kostet 45 bis 90 Euro im Monat.",
+        "Das hängt vom Umfang ab: wie viele Seiten, ob eine Stellenseite dazukommt, ob ich Bilder mache, ob Sie die laufende Betreuung möchten. Eine Zahl, die für jeden Betrieb stimmt, gibt es nicht — und eine zu nennen, die für Ihren dann doch nicht gilt, hilft niemandem.",
       ),
       absatz(
-        "Was Ihr Projekt kostet, steht nach dem Erstgespräch im Angebot — vorher würde ich raten, und das hilft niemandem.",
+        "Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Der steht vor dem ersten Handschlag fest und ändert sich danach nicht mehr. Sagen Sie mir im Gespräch ruhig, welchen Rahmen Sie sich vorstellen — dann sage ich Ihnen ehrlich, ob das zusammenpasst.",
       ),
     ],
   },
@@ -418,7 +420,7 @@ export const standardLeistungsseite: Leistungsseite = {
     text: "Eine Website ist kein Selbstzweck. Sie soll Anfragen bringen, Bewerbungen bringen und in Ruhe laufen. Danach sind diese Leistungen geschnitten.",
   },
   preishinweis:
-    "Zu Preisen: Eine vollständige Website liegt bei 2.500 bis 5.500 Euro, die laufende Betreuung bei 45 bis 90 Euro im Monat. Der genaue Preis steht nach dem Erstgespräch im Angebot und ändert sich danach nicht mehr.",
+    "Zu Preisen: Was eine Website kostet, hängt am Umfang — Seitenzahl, Funktionen, Bilder, Betreuung. Deshalb steht hier keine Zahl, die für Ihren Betrieb ohnehin nicht stimmen würde. Nach dem Erstgespräch bekommen Sie ein Angebot zum Festpreis. Was darin steht, gilt.",
   ablaufKopf: {
     kennzeichnung: "Ablauf",
     titel: "So läuft die Zusammenarbeit",
@@ -514,7 +516,7 @@ export const standardKontaktseite: Kontaktseite = {
     text: "Handwerker rufen an. Deshalb steht meine Nummer hier oben und nicht klein im Impressum.",
   },
   formularHinweis:
-    "Wenn Ihnen Schreiben lieber ist: vier Felder, mehr brauche ich nicht.",
+    "Wenn Ihnen Schreiben lieber ist: ein paar Zeilen genügen.",
   ablauf: [
     "Ich melde mich innerhalb von 24 Stunden — werktags meist deutlich schneller.",
     "Wir telefonieren rund 20 Minuten. Sie erzählen, ich höre zu und frage nach.",

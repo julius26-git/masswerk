@@ -14,8 +14,8 @@ function Massstrich({ x, y }: { x: number; y: number }) {
 
 /**
  * Der Aufmacher: die Website als Bauzeichnung. Was ich verkaufe, gezeigt
- * in der Sprache derer, die es kaufen — und die Maße an den Maßketten
- * sind die Versprechen.
+ * in der Sprache derer, die es kaufen — und an den Maßketten stehen die
+ * Versprechen statt der Maße.
  *
  * Gezeichnet wird sie beim Laden Zug um Zug: erst das Gerät, dann der
  * Inhalt, dann die Bemaßung.
@@ -26,7 +26,7 @@ export function Bauplan() {
       className="riss"
       viewBox="0 0 640 660"
       role="img"
-      aria-label="Technische Zeichnung eines Smartphones mit einer Handwerker-Website. Die Maßketten sind beschriftet mit: Vollbild in 0,8 Sekunden, zuerst fürs Handy, Anruf mit einem Tippen, eigene Bilder, Bewerbung in 60 Sekunden."
+      aria-label="Technische Zeichnung eines Smartphones mit einer Handwerker-Website. Die Maßketten sind beschriftet mit: schnell auch mobil, zuerst fürs Handy, Anruf mit einem Tippen, eigene Bilder, Bewerben ohne Unterlagen."
     >
       {/* --- Gerät ------------------------------------------------- */}
       <g fill="none" stroke={INK} className="zug" style={{ animationDelay: "220ms" }}>
@@ -212,7 +212,7 @@ export function Bauplan() {
         transform="rotate(-90 107 320)"
         style={{ animationDelay: "1740ms" }}
       >
-        Vollbild in 0,8 s
+        Schnell auch mobil
       </text>
       <text
         className="beschriftung"
@@ -231,7 +231,7 @@ export function Bauplan() {
         Eigene Bilder, kein Archiv
       </text>
       <text className="beschriftung" x="398" y="459" style={{ animationDelay: "1940ms" }}>
-        Bewerbung in 60 Sekunden
+        Bewerben ohne Unterlagen
       </text>
 
       {/* Zeichnungskopf unten rechts, wie auf jedem Plan */}
