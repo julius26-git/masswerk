@@ -475,7 +475,8 @@ body {
 .intro-marke {
   margin-top: 1.25rem;
   color: var(--color-paper);
-  font-size: clamp(2.25rem, 9vw, 3.75rem);
+  /* Muss in die Satzbreite passen, ohne umzubrechen. */
+  font-size: clamp(1.5rem, 6.2vw, 2.75rem);
   clip-path: inset(0 100% 0 0);
   animation: intro-freilegen 520ms var(--ease-blende) 420ms both;
 }
@@ -796,10 +797,19 @@ textarea.feld {
 
 .laufband {
   position: relative;
-  overflow: hidden;
   background: var(--color-signal);
   color: var(--color-ink);
   border-block: var(--rand);
+}
+
+.laufband-fenster {
+  overflow: hidden;
+  /* Der Text läuft am rechten Rand aus, statt am Schalter abgehackt zu werden. */
+  mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - 6rem),
+    transparent calc(100% - 2.75rem)
+  );
 }
 
 .laufband-spur {
@@ -844,9 +854,6 @@ textarea.feld {
   white-space: nowrap;
 }
 
-.laufband-spur {
-  padding-right: 2.75rem;
-}
 
 /* ------------------------------------------------------------------ */
 /* Bewegung                                                            */

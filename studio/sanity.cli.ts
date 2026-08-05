@@ -7,7 +7,7 @@ export default defineCliConfig({
   },
   studioHost: "doermann-digital",
   deployment: {
-    appId: "c5l5dq7w3x0a28sq5zaagxgu",
+    appId: "hbj09p0b1608ap6fpfvr09s4",
   },
   autoUpdates: true,
 });

@@ -14,24 +14,26 @@ export function Laufband({ posten }: { posten: string[] }) {
 
   return (
     <div className="laufband mt-4" data-lauf={laeuft ? "an" : "aus"}>
-      <div className="laufband-spur">
-        {[0, 1].map((durchlauf) => (
-          <div
-            key={durchlauf}
-            className="laufband-posten"
-            aria-hidden={durchlauf === 1 ? "true" : undefined}
-          >
-            {posten.map((eintrag) => (
-              <span key={eintrag} className="flex items-center gap-6">
-                <span className="schrift-etikett">{eintrag}</span>
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-1.5 w-1.5 rotate-45 bg-ink/45"
-                />
-              </span>
-            ))}
-          </div>
-        ))}
+      <div className="laufband-fenster">
+        <div className="laufband-spur">
+          {[0, 1].map((durchlauf) => (
+            <div
+              key={durchlauf}
+              className="laufband-posten"
+              aria-hidden={durchlauf === 1 ? "true" : undefined}
+            >
+              {posten.map((eintrag) => (
+                <span key={eintrag} className="flex items-center gap-6">
+                  <span className="schrift-etikett">{eintrag}</span>
+                  <span
+                    aria-hidden="true"
+                    className="inline-block h-1.5 w-1.5 rotate-45 bg-ink/45"
+                  />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       <button
