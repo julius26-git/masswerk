@@ -434,10 +434,12 @@ body {
   display: grid;
   place-items: center;
   background-color: var(--color-mat-deep);
+  /* Der Claim steht bei 1200 ms. Danach bleibt das Bild rund eine Sekunde
+     stehen, sonst ist es weg, bevor man es gelesen hat. */
   animation:
-    intro-weg 640ms var(--ease-blende) 1280ms forwards,
-    intro-durchlassen 1ms linear 1280ms forwards,
-    intro-aus 1ms linear 1920ms forwards;
+    intro-weg 640ms var(--ease-blende) 2280ms forwards,
+    intro-durchlassen 1ms linear 2280ms forwards,
+    intro-aus 1ms linear 2920ms forwards;
 }
 
 /* Wer nicht warten will, klickt oder tippt: dann springt die Sequenz ans Ende. */

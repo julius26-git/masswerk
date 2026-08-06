@@ -22,7 +22,9 @@ export function Intro({ name, claim }: { name: string; claim: string }) {
       element.dataset.uebersprungen = "ja";
     };
 
-    const timer = window.setTimeout(ueberspringen, 2200);
+    // Notbremse, falls die CSS-Sequenz nicht sauber endet. Muss hinter
+    // deren Ende liegen (2920 ms), sonst schneidet sie das Intro ab.
+    const timer = window.setTimeout(ueberspringen, 3400);
     window.addEventListener("pointerdown", ueberspringen, { once: true });
     window.addEventListener("keydown", ueberspringen, { once: true });
 
